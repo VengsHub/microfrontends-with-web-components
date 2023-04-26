@@ -1,0 +1,13 @@
+<body>
+  <h1>Minimal Example</h1>
+</body>
+<script type="module">
+  import('./default-web-component.js');
+  import('./remote-angular.js');
+
+  const element = document.createElement('default-web-component');
+  document.body.appendChild(element);
+
+  const remoteElement = document.createElement('wc-example');
+  document.body.appendChild(remoteElement);
+</script>

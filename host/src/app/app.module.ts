@@ -16,4 +16,9 @@ import { AppComponent } from './app.component';
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppModule { }
+export class AppModule {
+  constructor() {
+    const element = loadModule('./assets/default-web-component.js')
+    .then(() => console.log(document.createElement('default-web-component')));
+  }
+}

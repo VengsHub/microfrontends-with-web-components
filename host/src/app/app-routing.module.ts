@@ -7,4 +7,9 @@ const routes: Routes = [];
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+  test = 'http://127.0.0.1:8081/default-web-component.js';
+  constructor() {
+    // import(this.test).then(e => console.log('e', e));
+  }
+}

@@ -28,6 +28,8 @@ export class AppModule {
     const example = createCustomElement(ExampleComponent, {injector: this.injector});
     customElements.define('wc-example', example);
 
+    // ONLY CONVERT TOP LEVEL COMPONENT TO WEB COMPONENT AND LEAVE CHILD COMPONENTS AS ANGULAR SPECIFIC
+
     const subExample = createCustomElement(SubExampleComponent, {injector: this.injector});
     customElements.define('wc-sub-example', subExample);
 
