@@ -4,10 +4,10 @@
 	let container;
 
 	onMount(async () => {
+		// works in typescript as well, tested
 		await import('$lib/default-web-component.js');
 		const element = document.createElement('default-web-component');
 		container.appendChild(element);
-		console.log('ele', element);
 	});
 </script>
 
