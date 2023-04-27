@@ -20,7 +20,7 @@ import { SubExampleComponent } from './example/sub-example/sub-example.component
     AppRoutingModule
   ],
   providers: [],
-  bootstrap: [AppComponent] // TODO do I need to remove this or not? does it interfere with ng build?
+  bootstrap: [] // TODO do I need to remove this or not? does it interfere with ng build?
 })
 export class AppModule {
   constructor(private injector: Injector) {
