@@ -15,6 +15,9 @@
       ],
       "library-standalone": [
         "dist/library-standalone"
+      ],
+      "library-wc": [
+        "dist/library-wc"
       ]
     },
     "noFallthroughCasesInSwitch": true,
