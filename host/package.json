@@ -21,6 +21,7 @@
     "@angular/router": "^15.2.0",
     "@webcomponents/custom-elements": "^1.6.0",
     "library": "file:../library-from-scratch/dist/library",
+    "library-standalone": "file:../library-from-scratch/dist/library-standalone",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"

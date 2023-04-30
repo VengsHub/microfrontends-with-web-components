@@ -9,6 +9,9 @@ const routes: Routes = [
     console.log('m', m.LibraryModule);
       return m.LibraryModule;
     })
+  },
+  {
+    path: 'standalone', loadComponent: () => import('library-standalone').then(m => m.LibraryStandaloneComponent)
   }
 ];
 
