@@ -1,10 +1,12 @@
 ---
 import { LibraryStandaloneComponent } from 'library-standalone';
+import { AppComponent } from '../components/angular-component/app.component';
 ---
 
 <div>
     Also doesn't seem to work with external library, even with preserveSymlink: true in astro.config.mjs
     <LibraryStandaloneComponent></LibraryStandaloneComponent>
+    <AppComponent></AppComponent>
 </div>
 
 <style></style>

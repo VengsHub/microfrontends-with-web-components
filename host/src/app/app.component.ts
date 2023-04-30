@@ -11,8 +11,7 @@ export class AppComponent {
   test = './assets/default-web-component.js';
 
   constructor() {
-    // @ts-ignore
-    // const element = loadModule('./assets/default-web-component.js')
-    // .then(() => document.body.appendChild(document.createElement('default-web-component')));
+    const element = loadModule('./assets/default-web-component.js')
+    .then(() => document.body.appendChild(document.createElement('default-web-component')));
   }
 }

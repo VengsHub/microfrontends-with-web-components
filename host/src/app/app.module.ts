@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DefaultComponent } from './default/default.component';
+import { LibraryWcModule } from 'library-wc';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { DefaultComponent } from './default/default.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    LibraryWcModule
   ],
   providers: [],
   bootstrap: [AppComponent]
