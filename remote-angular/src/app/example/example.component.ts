@@ -8,10 +8,11 @@ import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } fro
 })
 export class ExampleComponent implements OnInit {
   @Input() input = '';
+  @Input() arrayInput: number[] = [];
   @Output() output = new EventEmitter<string>;
 
   ngOnInit(): void {
-    console.log('remote angular example app started!');
+    console.log('remote angular example app started!!', this.input);
     this.output.emit('remote angular example app event fired!');
   }
 

@@ -1,7 +1,8 @@
 <template>
     <div>
-        <h1>{{ msg }}</h1>
+        <h1>{{ input }}</h1>
         <button type="button" @click="count++">count is: {{ count }}</button>
+        <button type="button" @click="onClick">Emit Event</button>
     </div>
 </template>
 
@@ -10,7 +11,7 @@ import { ref, defineComponent } from "vue";
 export default defineComponent({
     name: "Vue Web Component",
     props: {
-        msg: {
+        input: {
             type: String,
             required: true,
         },
@@ -19,6 +20,11 @@ export default defineComponent({
         const count = ref(0);
         return { count };
     },
+    methods: {
+        onClick () {
+            this.$emit('output', 'value');
+        }
+    }
 });
 </script>
 

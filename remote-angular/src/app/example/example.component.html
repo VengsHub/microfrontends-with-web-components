@@ -1,4 +1,6 @@
 <p>
-  example works!
+  example works! {{input}}
+  <button (click)="output.emit('emitted!')">Emit Event</button>
   <app-sub-example></app-sub-example>
 </p>
+<div *ngFor="let num of arrayInput">{{num}}</div>

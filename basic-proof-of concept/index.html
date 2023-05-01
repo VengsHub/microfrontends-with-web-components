@@ -10,8 +10,13 @@
   document.body.appendChild(element);
 
   const remoteElementAngular = document.createElement('wc-example');
+  remoteElementAngular.input = 'test';
+  remoteElementAngular.arrayInput = [1, 2, 3];
+  remoteElementAngular.output = e => console.log('output angular', e);
   document.body.appendChild(remoteElementAngular);
 
   const remoteElementVue = document.createElement('vue-web-component');
+  remoteElementVue.input = 'test';
+  remoteElementVue.output = e => console.log('output vue', e);
   document.body.appendChild(remoteElementVue);
 </script>
