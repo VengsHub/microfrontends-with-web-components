@@ -4,10 +4,14 @@
 <script type="module">
   import('./default-web-component.js');
   import('./remote-angular.js');
+  import('./remote-vue.js');
 
   const element = document.createElement('default-web-component');
   document.body.appendChild(element);
 
-  const remoteElement = document.createElement('wc-example');
-  document.body.appendChild(remoteElement);
+  const remoteElementAngular = document.createElement('wc-example');
+  document.body.appendChild(remoteElementAngular);
+
+  const remoteElementVue = document.createElement('vue-web-component');
+  document.body.appendChild(remoteElementVue);
 </script>
