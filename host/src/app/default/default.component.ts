@@ -8,6 +8,8 @@ import { Component } from '@angular/core';
 export class DefaultComponent {
   constructor() {
     // commenting this in overwrites the whole project routing???
-    // const element = loadModule('./assets/remote-angular.js').then(e => console.log('mkmk', e));
+    // loadModule('./assets/remote-angular.js').then(e => console.log('mkmk', e));
+    loadModule('./assets/remote-vue.js')
+    .then(() => document.body.appendChild(document.createElement('vue-web-component')));
   }
 }
