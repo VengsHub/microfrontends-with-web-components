@@ -17,6 +17,9 @@
 
 		await import('$lib/remote-vue.js');
 		container.appendChild(document.createElement('vue-web-component'));
+
+		await import('$lib/zpa-portal.js');
+		container.appendChild(document.createElement('zpa-portal-client'));
 	});
 </script>
 
