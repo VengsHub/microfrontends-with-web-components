@@ -5,6 +5,7 @@
   import('./default-web-component.js');
   import('./remote-angular.js');
   import('./remote-vue.js');
+  import('./zpa-portal.js');
 
   const element = document.createElement('default-web-component');
   document.body.appendChild(element);
@@ -19,4 +20,7 @@
   remoteElementVue.input = 'test';
   remoteElementVue.output = e => console.log('output vue', e);
   document.body.appendChild(remoteElementVue);
+
+  const zpa = document.createElement('zpa-portal-client');
+  document.body.appendChild(zpa);
 </script>
