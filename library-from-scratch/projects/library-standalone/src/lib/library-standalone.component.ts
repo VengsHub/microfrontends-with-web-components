@@ -10,9 +10,13 @@ import { LibraryStandaloneService } from './library-standalone.service';
     </p>
   `,
   styles: [
+  ],
+  providers: [
+    LibraryStandaloneService
   ]
 })
 export class LibraryStandaloneComponent {
   constructor(private readonly libraryStandaloneService: LibraryStandaloneService) {
+    console.log('standalone component loaded');
   }
 }

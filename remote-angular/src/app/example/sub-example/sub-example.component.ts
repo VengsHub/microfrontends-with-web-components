@@ -4,7 +4,8 @@ import { Component, ViewEncapsulation } from '@angular/core';
   selector: 'app-sub-example',
   templateUrl: './sub-example.component.html',
   styleUrls: ['./sub-example.component.scss'],
-  encapsulation: ViewEncapsulation.ShadowDom
+  encapsulation: ViewEncapsulation.ShadowDom,
+  standalone: true
 })
 export class SubExampleComponent {
 
