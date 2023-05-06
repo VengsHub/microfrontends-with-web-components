@@ -1,0 +1,77 @@
+<div class="menu-bar white-text" *ngIf="(isMobile$ | async) === false">
+  <button class="flyout-menu-button">
+    <fa-icon icon="bars"></fa-icon>
+  </button>
+
+  <nav class="tab-bar">
+    <ng-container *ngIf="maxVisibleTabs$ | async as maxVisibleTabs">
+      <ng-container *ngFor="let tab of tabService.tabs$ | async; let index = index">
+        <app-tab *ngIf="index < maxVisibleTabs"
+                 [tab]="tab"
+                 [tabWidth]="(tabWidth$ | async) || 280"
+                 [isActive]="index === activeTabIndex"
+                 [isHovered]="index === hoveredTabIndex"
+                 [shouldShrink]="(tabShouldShrink$ | async) || false"
+                 (mouseenter)="hoveredTabIndex = index"
+                 (mouseleave)="hoveredTabIndex = -1"
+                 (removeTab)="tabService.removeTab(index)">
+        </app-tab>
+      </ng-container>
+    </ng-container>
+
+    <button *ngIf="tabsAreOverflowing$ | async" class="overflow-menu-button">
+      <fa-icon icon="ellipsis"></fa-icon>
+      <span *ngIf="tabService.tabs$ | async as tabs">{{tabs.length}} Tabs</span>
+    </button>
+    <button class="new-tab-button" (click)="tabService.addTab()">
+      <fa-icon icon="plus"></fa-icon>
+    </button>
+  </nav>
+
+  <div class="action-buttons">
+    <button>
+      <fa-icon icon="search"></fa-icon>
+    </button>
+    <button>
+      <fa-icon icon="messages"></fa-icon>
+    </button>
+    <button>
+      <fa-icon icon="bell"></fa-icon>
+    </button>
+    <button>
+      <img class="profile-image" ngSrc="assets/images/dummy-profile.png" alt="profile" height="854" width="1280"/>
+    </button>
+  </div>
+</div>
+
+<div *ngIf="isMobile$ | async" class="menu-bar-mobile white-text">
+  <div *ngIf="tabService.tabs$ | async as tabs" class="tab"
+       (mouseenter)="hoveredTabIndex = activeTabIndex"
+       (mouseleave)="hoveredTabIndex = -1">
+    <fa-icon icon="square"></fa-icon>
+    <span class="text-small">{{tabs[activeTabIndex].name}}</span>
+    <span class="tab-count text-tiny">{{tabs.length}} Tabs</span>
+    <fa-icon *ngIf="activeTabIndex !== hoveredTabIndex" icon="chevron-down"></fa-icon>
+    <button (click)="tabService.removeTab(activeTabIndex)">
+      <fa-icon *ngIf="activeTabIndex === hoveredTabIndex" icon="close"></fa-icon>
+    </button>
+  </div>
+
+  <div class="action-buttons">
+    <button>
+      <fa-icon icon="plus" size="xl"></fa-icon>
+    </button>
+    <button>
+      <fa-icon icon="search" size="xl"></fa-icon>
+    </button>
+    <button>
+      <fa-icon icon="messages" size="xl"></fa-icon>
+    </button>
+    <button>
+      <fa-icon icon="bell" size="xl"></fa-icon>
+    </button>
+    <button>
+      <fa-icon icon="bars" size="xl"></fa-icon>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<div *ngIf="tab" class="tab"
+   [class.active]="isActive"
+   [style.width]="shouldShrink && !isActive ? '44px' : tabWidth + 'px'">
+  <fa-icon *ngIf="isActive || !shouldShrink || !isHovered" icon="square"></fa-icon>
+  <span *ngIf="isActive || !shouldShrink" class="text-small">{{tab.name}}</span>
+  <button *ngIf="isActive || isHovered"
+          class="close-tab-button" (click)="removeTab.emit()">
+    <fa-icon icon="close"></fa-icon>
+  </button>
+  <div *ngIf="isHovered" class="tab-preview">
+    <fa-icon icon="square"></fa-icon>
+    <div>
+      <span class="bold-text">{{tab.name}}</span>
+      <span>{{tab.description}}</span>
+      <span class="text-tiny">{{tab.footnote}}</span>
+    </div>
+  </div>
+</div>
