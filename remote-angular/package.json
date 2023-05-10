@@ -5,7 +5,8 @@
     "ng": "ng",
     "start": "ng serve --port=4201",
     "build": "ng build",
-    "build:elements": "ng build --output-hashing none && node build-elements.js",
+    "build:prod": "ng build --configuration production",
+    "build:elements": "npm run build:prod && node build-elements.js",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

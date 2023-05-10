@@ -6,15 +6,27 @@ import { createCustomElement } from '@angular/elements';
 import { ExampleComponent } from './app/example/example.component';
 import { SubExampleComponent } from './app/example/sub-example/sub-example.component';
 import { Example2Component } from './app/example2/example2.component';
+import { environment } from 'src/environments/environment';
+import { ApplicationRef } from '@angular/core';
 
 (async () => {
-  // replace with this for local development
-  // const app = await bootstrapApplication(AppComponent, {
-  const app = await createApplication({
-    providers: [
-      provideRouter(routes)
-    ]
-  });
+  let app: ApplicationRef;
+
+  // bootstrapping application is required for local development
+  // removing bootstrap ensures export of web components
+  if (environment.production) {
+    app = await createApplication({
+      providers: [
+        provideRouter(routes)
+      ]
+    });
+  } else {
+    app = await bootstrapApplication(AppComponent, {
+      providers: [
+        provideRouter(routes)
+      ]
+    });
+  }
 
   const example = createCustomElement(ExampleComponent, {injector: app.injector});
   customElements.define('wc-example', example);
