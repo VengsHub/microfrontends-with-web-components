@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { NavigationStart, Router } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-default',
@@ -6,9 +8,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./default.component.scss']
 })
 export class DefaultComponent {
-  constructor() {
+  readonly beforeNav = this.router.events.pipe(
+    filter(event => event instanceof NavigationStart)
+  );
+
+  constructor(private readonly router: Router) {
     // commenting this in overwrites the whole project routing???
-    // loadRemote
+    // rename to loadRemote
     // loadModule('./assets/remote-angular.js').then(e =>
     //   document.body.appendChild(document.createElement('wc-example'))
     // );
@@ -24,7 +30,7 @@ export class DefaultComponent {
     await loadModule('./assets/remote-angular.js');
     const remoteElementAngular = document.createElement('remote-app-component');
     // @ts-ignore
-    remoteElementAngular.route = 'example';
+    // remoteElementAngular.route = 'example';
     document.body.appendChild(remoteElementAngular);
   }
 }

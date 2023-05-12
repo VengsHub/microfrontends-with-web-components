@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { Example2Component } from './example2/example2.component';
 
 @Component({
@@ -9,7 +9,8 @@ import { Example2Component } from './example2/example2.component';
   standalone: true,
   imports: [
     RouterOutlet,
-    Example2Component
+    Example2Component,
+    RouterLink
   ]
 })
 export class AppComponent {
