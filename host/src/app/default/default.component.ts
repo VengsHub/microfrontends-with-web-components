@@ -8,13 +8,23 @@ import { Component } from '@angular/core';
 export class DefaultComponent {
   constructor() {
     // commenting this in overwrites the whole project routing???
-    loadModule('./assets/remote-angular.js').then(e =>
-      document.body.appendChild(document.createElement('wc-example'))
-    );
-    loadModule('./assets/remote-vue.js')
-    .then(() => document.body.appendChild(document.createElement('vue-web-component')));
+    // loadRemote
+    // loadModule('./assets/remote-angular.js').then(e =>
+    //   document.body.appendChild(document.createElement('wc-example'))
+    // );
+    // loadModule('./assets/remote-vue.js')
+    // .then(() => document.body.appendChild(document.createElement('vue-web-component')));
+    //
+    // loadModule('./assets/zpa-portal.js')
+    // .then(() => document.body.appendChild(document.createElement('zpa-portal-client')));
+    this.importRemote();
+  }
 
-    loadModule('./assets/zpa-portal.js')
-    .then(() => document.body.appendChild(document.createElement('zpa-portal-client')));
+  async importRemote(): Promise<void> {
+    await loadModule('./assets/remote-angular.js');
+    const remoteElementAngular = document.createElement('remote-app-component');
+    // @ts-ignore
+    remoteElementAngular.route = 'example';
+    document.body.appendChild(remoteElementAngular);
   }
 }

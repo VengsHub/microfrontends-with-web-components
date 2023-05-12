@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, Input } from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
 import { Example2Component } from './example2/example2.component';
 
 @Component({
@@ -13,5 +13,16 @@ import { Example2Component } from './example2/example2.component';
   ]
 })
 export class AppComponent {
+  private _route = '';
+  @Input() set route(route: string) {
+    this._route = route;
+    console.log('remote angular routing commencing to', this._route);
+    this.router.navigate([this._route]);
+  }
+
   title = 'remote-angular';
+
+  constructor(private readonly router: Router) {
+    console.log('component loaded');
+  }
 }

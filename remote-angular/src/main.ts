@@ -28,14 +28,17 @@ import { ApplicationRef } from '@angular/core';
     });
   }
 
-  const example = createCustomElement(ExampleComponent, {injector: app.injector});
-  customElements.define('wc-example', example);
+  const appComponent = createCustomElement(AppComponent, {injector: app.injector});
+  customElements.define('remote-app-component', appComponent);
 
-// ONLY CONVERT TOP LEVEL COMPONENT TO WEB COMPONENT AND LEAVE CHILD COMPONENTS AS ANGULAR SPECIFIC
-
-  const subExample = createCustomElement(SubExampleComponent, {injector: app.injector});
-  customElements.define('wc-sub-example', subExample);
-
-  const example2 = createCustomElement(Example2Component, {injector: app.injector});
-  customElements.define('wc-example2', example2);
+//   const example = createCustomElement(ExampleComponent, {injector: app.injector});
+//   customElements.define('wc-example', example);
+//
+// // ONLY CONVERT TOP LEVEL COMPONENT TO WEB COMPONENT AND LEAVE CHILD COMPONENTS AS ANGULAR SPECIFIC
+//
+//   const subExample = createCustomElement(SubExampleComponent, {injector: app.injector});
+//   customElements.define('wc-sub-example', subExample);
+//
+//   const example2 = createCustomElement(Example2Component, {injector: app.injector});
+//   customElements.define('wc-example2', example2);
 })();
