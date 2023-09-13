@@ -1,0 +1,25 @@
+<div class="top-items">
+  <a routerLink="/home" (click)="closeFlyoutMenu.emit()">
+    <app-icon name="home" color="blue500"></app-icon>
+    <span>Praxis Dashboard</span>
+  </a>
+  <a *ngFor="let navItem of navigationItems" [routerLink]="navItem.urlPattern" (click)="closeFlyoutMenu.emit()">
+    <app-icon name="square" color="blue500"></app-icon>
+    <span>{{navItem.label}}</span>
+  </a>
+</div>
+
+<div class="horizontal-line"></div>
+
+<div class="bottom-items">
+  <a (click)="closeFlyoutMenu.emit()">
+    <app-icon name="support"></app-icon>
+    <span>Hilfe & Support</span>
+  </a>
+  <a (click)="closeFlyoutMenu.emit()">
+    <app-icon name="settings"></app-icon>
+    <span>Administration</span>
+  </a>
+
+  <div class="version">DISWEB360 0.10.1003</div>
+</div>

@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+@import "typography";
+@import "app/shared/services/alert/toastr.style";
+
+* {
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-color: unset;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  // fix for: windows always shows a scrollbar, resulting in a double scrollbar here
+  overflow: hidden;
+}

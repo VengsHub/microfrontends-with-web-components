@@ -1,7 +1,0 @@
-{
-  "compilerOptions": {
-      "experimentalDecorators": true,
-    "preserveSymlinks": true
-  },
-  "extends": "astro/tsconfigs/strict"
-}

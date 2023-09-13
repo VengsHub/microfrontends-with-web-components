@@ -1,0 +1,12 @@
+<label *ngIf="label" class="text-small">{{ label }}</label>
+<div class="select-container" (click)="toggleDropdown()" #selectField>
+  <div class="selected-item">
+    {{ getSelectedLabel() }}
+    <app-icon name="angle-down" [class.open]="dropdownVisible"></app-icon>
+  </div>
+  <div class="dropdown" *ngIf="dropdownVisible" (appClickOutside)="toggleDropdown()">
+    <div class="dropdown-item" *ngFor="let option of options" (click)="selectOption($event, option)">
+      {{ option.label }}
+    </div>
+  </div>
+</div>

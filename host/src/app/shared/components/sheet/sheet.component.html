@@ -1,0 +1,7 @@
+<section
+  (appClickOutside)="userInterfaceService.sPatientSearchContextMenuData.set(undefined)"
+  *ngIf="userInterfaceService.cIsMobile() && userInterfaceService.sPatientSearchContextMenuData()"
+  @sheetAnimation
+>
+  <app-search-entry-context-menu></app-search-entry-context-menu>
+</section>

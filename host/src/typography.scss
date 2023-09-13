@@ -1,0 +1,68 @@
+* {
+  color: var(--gray800);
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+.bold-text {
+  font-weight: bold;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 32px;
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+h3 {
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 24px;
+}
+
+h4 {
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+h5 {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+h6 {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.text-large {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.text-standard {
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.text-small {
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.text-footnote {
+  font-size: 11px;
+  line-height: 16px;
+}

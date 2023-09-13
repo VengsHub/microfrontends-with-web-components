@@ -1,0 +1,14 @@
+<div class="tabs">
+  <a class="tab" [routerLink]="'/' + DashboardTab.MasterData" routerLinkActive="active"
+     [routerLinkActiveOptions]="{exact:true}"
+     [skipLocationChange]="true"
+     queryParamsHandling="preserve">
+    Stammdaten
+  </a>
+  <a *ngIf="secondTabService.cSecondTabContent()" class="tab" routerLink="/second-tab" routerLinkActive="active"
+     [routerLinkActiveOptions]="{exact:true}"
+     [skipLocationChange]="true"
+     queryParamsHandling="preserve">
+    {{secondTabService.cSecondTabContent()?.title}}
+  </a>
+</div>

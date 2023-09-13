@@ -1,0 +1,29 @@
+<header *ngIf="dataService.cPatient() as patient">
+
+  <div class="wrap-header">
+    <div class="patient">
+      <div class="patient-description">
+        <h3>{{patient.lastName}},&nbsp;{{patient.firstName}}&nbsp;</h3>
+        <div class="patient-description__genus">{{"(" + patient.gender.toLowerCase() + ")"}}</div>
+      </div>
+      <div class="wrap-info">
+        <div class="patient-info">
+          {{patient.dateOfBirth | date: 'dd.MM.yyyy'}}&nbsp;-
+          {{patient.dateOfBirth | age}} -
+          {{patient.street}},
+          {{patient.postalCode}}
+          {{patient.city}}
+        </div>
+        <div class="patient-cave">
+          <div class="patient-cave__icon"></div>
+          <div class="patient-cave__caves"><span>Cave:</span> {{patient.caveats}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="action">
+      <button class="secondary" type="button" (click)="action()">Action</button>
+      <button class="primary" type="button" (click)="action()">Action</button>
+    </div>
+  </div>
+
+</header>

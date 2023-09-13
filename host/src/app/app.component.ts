@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
-// import './default-web-component'; - and in html <default-web-component></default-web-component> also works
+import { RouterOutlet } from '@angular/router';
+import {MenuBarComponent} from "./menu-bar/menu-bar.component";
+import { SheetComponent } from "./shared/components/sheet/sheet.component";
+import { sheetAnimation } from "../animations";
+import { NgIf } from "@angular/common";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    standalone: true,
+    imports: [MenuBarComponent, RouterOutlet, SheetComponent, NgIf],
+    animations: [sheetAnimation]
 })
 export class AppComponent {
-  title = 'host';
-  test = './assets/default-web-component.js';
-
-  constructor() {
-    const element = loadModule('./assets/default-web-component.js')
-    .then(() => document.body.appendChild(document.createElement('default-web-component')));
-  }
 }

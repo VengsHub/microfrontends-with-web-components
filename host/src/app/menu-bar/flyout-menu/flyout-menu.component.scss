@@ -1,0 +1,66 @@
+:host {
+  width: 320px;
+  height: calc(100% - 48px);
+  position: fixed;
+  top: 48px;
+  background-color: var(--white);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+
+  &.is-mobile {
+    width: 100%;
+    height: 520px;
+    top: auto;
+    bottom: 48px;
+    padding: 24px 16px;
+  }
+
+  .top-items {
+    a {
+      // needed so that added border on hover does not move elements
+      border: 1px solid transparent;
+
+      span {
+        color: var(--blue500);
+      }
+    }
+
+    a:first-child, a:nth-child(3n+1) {
+      margin-bottom: 16px
+    }
+
+    a:hover {
+      background-color: var(--blue500-05);
+      border: 1px solid var(--blue500-05);
+    }
+  }
+
+  a {
+    width: 100%;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 10px;
+  }
+
+  .horizontal-line {
+    width: 100%;
+    height: 1px;
+    background-color: var(--gray400);
+    margin-top: auto;
+    margin-bottom: 16px;
+  }
+
+  .bottom-items {
+    a:hover {
+      background-color: var(--gray200);
+    }
+
+    .version {
+      margin: 8px 32px;
+      color: var(--gray600)
+    }
+  }
+}

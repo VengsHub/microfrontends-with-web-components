@@ -1,0 +1,29 @@
+<div class="header">
+  <div class="text-large bold-text">Vorname Nachname</div>
+</div>
+<div class="links">
+  <a (click)="closeFlyoutMenu.emit()">
+    <app-icon name="name-tag" color="blue500"></app-icon>
+    <span>Mein Profil</span>
+  </a>
+  <a (click)="closeFlyoutMenu.emit()">
+    <app-icon name="user-cog" color="blue500"></app-icon>
+    <span>Accounteinstellungen</span>
+  </a>
+  <a (click)="closeFlyoutMenu.emit()">
+    <app-icon name="bell" color="blue500"></app-icon>
+    <span>Benachrichtigungen</span>
+  </a>
+</div>
+
+<div class="footer">
+  <a (click)="closeFlyoutMenu.emit()">
+    <app-icon name="people-arrows" color="blue500"></app-icon>
+    <span>Benutzer wechseln</span>
+  </a>
+  <a class="logout">
+    <app-icon name="door-open" color="red600"></app-icon>
+    <span>Abmelden</span>
+  </a>
+</div>
+

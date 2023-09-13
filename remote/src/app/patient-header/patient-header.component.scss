@@ -1,0 +1,107 @@
+header {
+  width: 100%;
+  background-color: #FFFFFF;
+
+  .wrap-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px 0 24px;
+
+    .action {
+      display: flex;
+      gap: 12px;
+
+      button {
+        display: flex;
+        padding: 9px 12px;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        transition: background-color 0.3s ease;
+        cursor: pointer;
+
+        &.primary {
+          border: 1px solid #166CC9;
+          border-radius: 4px;
+          background: #166CC9;
+          color: #FFF;
+        }
+
+        &.secondary {
+          border: 1px solid #D0E2F4;
+          border-radius: 4px;
+          background: #F3F8FC;
+          color: #166CC9;
+
+          &:hover {
+            background: #FFF;
+          }
+        }
+      }
+    }
+    .patient {
+
+      padding: 16px 24px 0 0;
+      &-description {
+        display: flex;
+
+        h3 {
+          color: #171717;
+          font-size: 22px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: 24px;
+        }
+
+        &__genus{
+          color: #767676;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 450;
+          line-height: 24px;
+        }
+      }
+      &-info {
+        color: #767676;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 450;
+        line-height: 24px;
+      }
+      &-cave {
+        display: flex;
+        gap: 4px;
+        align-items: center;
+
+        &__icon {
+          position: relative;
+          width: 20px;
+          height: 20px;
+          border-radius: 4px;
+          background-color: #FCE8E8;
+          background-image: url('/assets/images/icn-cave.svg');
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+
+        &__caves, &__caves span {
+          color: #930F0F;
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 450;
+          line-height: 24px;
+        }
+
+        &__caves span {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+.wrap-info {
+  display: flex;
+  gap:20px;
+}

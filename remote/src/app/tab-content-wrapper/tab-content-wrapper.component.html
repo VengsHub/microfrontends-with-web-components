@@ -1,0 +1,5 @@
+<section>
+  <div class="card" *ngIf="cCurrentTab() as currentTab">
+    <app-iframe-component [iframe]="currentTab"></app-iframe-component>
+  </div>
+</section>

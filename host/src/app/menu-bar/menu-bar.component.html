@@ -1,0 +1,104 @@
+<div *ngIf="cShowBackdrop()"
+     class="backdrop" @backdropFade></div>
+
+<div class="menu-bar" *ngIf="!cIsMobile()">
+  <button class="flyout-menu-button"
+          (click)="sFlyoutMenuOpen.set(!sFlyoutMenuOpen())"
+          [class.active]="sFlyoutMenuOpen()">
+    <app-icon [name]="sFlyoutMenuOpen() ? 'close' : 'menu-bars'"
+              [color]="sFlyoutMenuOpen() ? 'blue800' : 'white'">
+    </app-icon>
+  </button>
+
+  <nav class="tab-bar">
+    <ng-container *ngFor="let tab of tabService.cTabs(); let index = index">
+      <app-tab *ngIf="index < cMaxVisibleTabs()"
+               [tab]="tab"
+               [tabWidth]="cTabWidth()"
+               [isActive]="index === activeTabIndex"
+               [shouldShrink]="cTabsShouldShrink()"
+               (removeTab)="tabService.removeTab(index)">
+      </app-tab>
+    </ng-container>
+
+    <button *ngIf="cTabsAreOverflowing()" class="overflow-menu-button">
+      <app-icon name="ellipsis" color="white"></app-icon>
+      <span>{{tabService.cTabs().length - cMaxVisibleTabs()}} Tabs</span>
+    </button>
+    <button class="new-tab-button" (click)="tabService.addTab()">
+      <app-icon name="plus" color="white"></app-icon>
+    </button>
+  </nav>
+
+  <div class="action-buttons">
+    <button (click)="sFlyoutSearchOpen.set(!sFlyoutSearchOpen())"
+            [class.active]="sFlyoutSearchOpen()">
+      <app-icon name="search" [color]="sFlyoutSearchOpen() ? 'blue800' : 'white'"></app-icon>
+    </button>
+    <button>
+      <app-icon name="calendar-circle-user" color="white"></app-icon>
+    </button>
+    <button>
+      <app-icon name="bell" color="white"></app-icon>
+    </button>
+    <button class="flyout-user-menu-button"
+            (click)="sFlyoutUserMenuOpen.set(!sFlyoutUserMenuOpen())"
+            [class.active]="sFlyoutUserMenuOpen()">
+      <div class="profile-image">XY</div>
+    </button>
+  </div>
+</div>
+
+<div *ngIf="cIsMobile()" class="menu-bar-mobile">
+  <div class="tab">
+    <app-icon name="square" color="white"></app-icon>
+    <span>{{tabService.cTabs()[activeTabIndex].name}}</span>
+    <span class="tab-count">{{tabService.cTabs().length}} Tabs</span>
+    <app-icon name="angle-down" color="white"></app-icon>
+  </div>
+
+  <div class="action-buttons">
+    <button (click)="sFlyoutMenuOpen.set(!sFlyoutMenuOpen())"
+            [class.active]="sFlyoutMenuOpen()">
+      <app-icon [name]="sFlyoutMenuOpen() ? 'close' : 'menu-bars'"
+                [color]="sFlyoutMenuOpen() ? 'blue800' : 'white'">
+      </app-icon>
+    </button>
+    <button (click)="sFlyoutSearchOpen.set(!sFlyoutSearchOpen())"
+            [class.active]="sFlyoutSearchOpen()">
+      <app-icon name="search" [color]="sFlyoutSearchOpen() ? 'blue800' : 'white'"></app-icon>
+    </button>
+    <button>
+      <app-icon name="calendar-circle-user" color="white"></app-icon>
+    </button>
+    <button>
+      <app-icon name="bell" color="white"></app-icon>
+    </button>
+    <button (click)="sFlyoutUserMenuOpen.set(!sFlyoutUserMenuOpen())"
+            [class.active]="sFlyoutUserMenuOpen()">
+      <div class="profile-image">XY</div>
+    </button>
+  </div>
+</div>
+
+<app-flyout-menu *ngIf="sFlyoutMenuOpen()"
+                 [@flyoutMenuAnimation]="cIsMobile() ? 'open-mobile' : 'open-desktop'"
+                 [isMobile]="cIsMobile()"
+                 [navigationItems]="navigationItemsService.cNavigationItems()"
+                 (closeFlyoutMenu)="sFlyoutMenuOpen.set(false)"
+                 (appClickOutside)="sFlyoutMenuOpen.set(false)">
+</app-flyout-menu>
+
+<app-flyout-user-menu *ngIf="sFlyoutUserMenuOpen()"
+                      [@flyoutUserMenuAnimation]="cIsMobile() ? 'open-mobile' : 'open-desktop'"
+                      [style.width]="cIsMobile() ? '100%' : '290px'"
+                      [class.mobile]="cIsMobile()"
+                      (closeFlyoutMenu)="sFlyoutUserMenuOpen.set(false)"
+                      (appClickOutside)="sFlyoutUserMenuOpen.set(false)">
+</app-flyout-user-menu>
+
+<app-flyout-search *ngIf="sFlyoutSearchOpen()" [@flyoutSearchAnimation]="!cIsMobile()"
+                   [style.width]="cIsMobile() ? '100%' : '384px'"
+                   [class.mobile]=cIsMobile()
+                   (appClickOutside)="sFlyoutSearchOpen.set(false)">
+</app-flyout-search>

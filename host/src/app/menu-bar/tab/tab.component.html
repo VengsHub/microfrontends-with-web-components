@@ -1,0 +1,20 @@
+<div *ngIf="tab" class="tab" [class.active]="isActive"
+     [style.width]="shouldShrink && !isActive ? '44px' : tabWidth + 'px'"
+     (mouseenter)="sIsHovered.set(true)"
+     (mouseleave)="sIsHovered.set(false)">
+  <a>
+    <app-icon name="square" color="white"></app-icon>
+    <span *ngIf="isActive || !shouldShrink" [class.text-small]="userInterfaceService.cIsMobile()">{{tab.name}}</span>
+  </a>
+  <button *ngIf="isActive || (!shouldShrink && sIsHovered())" class="close-tab-button" (click)="removeTab.emit()">
+    <app-icon name="close" color="white"></app-icon>
+  </button>
+  <div *ngIf="showTooltip$ | async" class="tab-preview">
+    <app-icon name="square" color="white"></app-icon>
+    <div>
+      <span class="bold-text">{{tab.name}}</span>
+      <span>{{tab.description}}</span>
+      <span class="text-footnote">{{tab.footnote}}</span>
+    </div>
+  </div>
+</div>

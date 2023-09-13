@@ -1,0 +1,103 @@
+:host {
+  height: 100%;
+}
+
+.tab {
+  height: 100%;
+  border-right: 1px solid var(--white-30);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  a {
+    height: 100%;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    overflow: hidden;
+
+    span {
+      color: var(--white);
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+  }
+
+  button {
+    width: 24px;
+    height: 24px;
+    border-radius: 8px;
+    margin-right: 12px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      background-color: var(--white-30);
+    }
+  }
+
+  &:hover {
+    background-color: var(--blue800);
+  }
+
+  &.active {
+    background-color: var(--blue600);
+
+    &:hover {
+      background-color: var(--blue500);
+    }
+
+    // when pressed
+    &:active {
+      background-color: var(--blue700);
+    }
+  }
+
+  .tab-preview {
+    width: 215px;
+    height: 80px;
+    background-color: var(--blue900);
+    border-radius: 12px;
+    padding: 8px;
+    position: absolute;
+    margin-left: -4px;
+    top: 56px;
+    display: flex;
+    gap: 4px;
+
+    app-icon {
+      margin-top: 4px;
+    }
+
+    div {
+      display: flex;
+      flex-direction: column;
+
+      span {
+        color: var(--white);
+      }
+    }
+  }
+}
+
+button {
+  background-color: transparent;
+  z-index: 1;
+
+  &:hover {
+    background-color: var(--blue800);
+  }
+
+  // when pressed
+  &:active {
+    background-color: var(--blue600);
+  }
+
+  &.active {
+    background-color: var(--white);
+  }
+}

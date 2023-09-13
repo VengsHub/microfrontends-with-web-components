@@ -1,0 +1,24 @@
+<!--ng-container *ngIf="errorService.error$ | async as error; else content">
+  <app-error [error]="error"></app-error>
+</ng-container-->
+
+<ng-container> <!--TODO change to <ng-template #content>-->
+    <app-patient-header></app-patient-header>
+    <app-tab-bar></app-tab-bar>
+
+    <router-outlet></router-outlet>
+
+    <div *ngIf="modalService.activeModal" class="modal-background">
+      <img [src]="'icn-close' | icon:hovered === 'close'" alt="Widget entfernen"
+           (mouseenter)="hovered = 'close'"
+           (mouseleave)="hovered = ''"
+           (click)="hovered = ''; modalService.hideModal()">
+      <div class="modal" (click)="$event.stopPropagation()">
+        <ng-container [ngSwitch]="modalService.activeModal">
+          <ng-container *ngSwitchCase="'patient-info'">
+            <app-patient-info *ngIf="dataService.patient$ | async as patient" [patient]="patient ?? undefined"></app-patient-info>
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+</ng-container>

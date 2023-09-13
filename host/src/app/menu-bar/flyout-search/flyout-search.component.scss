@@ -1,0 +1,168 @@
+:host {
+  width: 384px;
+  height: calc(100% - 48px);
+  position: fixed;
+  top: 48px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  background: var(--white);
+  border-left: 1px solid var(--gray700-15);
+
+  .top-items {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 8px;
+
+    h6 {
+      font-size: 20px;
+      line-height: 32px;
+      font-weight: 700;
+    }
+
+    button {
+      color: var(--blue500);
+    }
+
+    .subtext {
+      color: var(--gray600);
+    }
+  }
+
+  .search-wrapper {
+    padding: 32px;
+    width: 100%;
+
+    &.collapsed {
+      height: 76px;
+    }
+
+    .row {
+      display: flex;
+      gap: 16px;
+
+      &:first-of-type{
+        padding-bottom: 8px;
+      }
+
+      .form-field {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        width: 100%;
+
+        label {
+          font-size: 12px;
+          line-height: 20px;
+          width: 136px;
+        }
+
+        input, select {
+          width: 100%;
+          height: 44px;
+          padding: 8px 12px;
+          background: var(--white);
+          border: 1px solid var(--gray500);
+          border-radius: 4px;
+
+          &::placeholder {
+            color: var(--gray600);
+          }
+
+          &.ng-invalid.ng-touched {
+            border: 1px solid var(--red500);
+            background-color: var(--red100);
+          }
+
+          :active {
+            color: var(--blue500);
+          }
+
+          &::placeholder {
+            color: var(--gray600);
+          }
+        }
+
+        .input-wrapper {
+          position: relative;
+
+          .clear-field-button {
+            position: absolute;
+            top: 10px;
+            right: 12px;
+          }
+        }
+
+        .error-message {
+          display: flex;
+          flex-direction: column;
+          margin-top: 2px;
+
+          div {
+            display: flex;
+            gap: 4px;
+            color: var(--red500);
+
+            app-icon {
+              margin-top: 6px;
+            }
+          }
+        }
+
+        .status-wrapper {
+          position: relative;
+
+          select {
+            appearance: none;
+            cursor: pointer;
+          }
+
+          &::after {
+            content: "";
+            mask-image: url('/assets/icons/angle-down.svg');
+            background-color: var(--gray600);
+            width: 16px;
+            height: 16px;
+            display: inline-block;
+            position: absolute;
+            top: 14px;
+            right: 12px;
+          }
+        }
+      }
+    }
+  }
+
+  .divider {
+    position: relative;
+    width: 100%;
+    height: 4px;
+
+    background: var(--gray700-10);
+  }
+
+  .mask::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to top, transparent, rgba(255, 255, 255, 0.5));
+    height: 40px;
+    width: 100%;
+  }
+
+  &.mobile {
+    height: calc(100% - 96px);
+
+    .top-items {
+      padding-bottom: 0;
+    }
+
+    .search-wrapper {
+      padding: 16px;
+    }
+  }
+}
+

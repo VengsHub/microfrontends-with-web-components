@@ -1,0 +1,86 @@
+<div class="search-wrapper" [class.mobile]="userInterfaceService.cIsMobile()"
+  [class.collapsed]="cCollapseSearchWrapper()">
+  <div class="top-items">
+    <ng-container *ngIf="!cCollapseSearchWrapper(); else uncollapsedView">
+      <h6>Patientensuche</h6>
+      <button class="reset"  data-test="reset" (click)="resetFormGroup()">Zurücksetzen</button>
+    </ng-container>
+    <ng-template #uncollapsedView>
+      <div>
+        <h4>Patientensuche</h4>
+        <div *ngIf="patientSearchForm.value as patient" class="subtext text-small">
+          {{cFormattedFormValues()}}
+        </div>
+      </div>
+      <button (click)="uncollapse($event)">
+        <app-icon name="angle-down" color="blue500" width="40" height="40"></app-icon>
+      </button>
+    </ng-template>
+  </div>
+
+  <div *ngIf="!cCollapseSearchWrapper()">
+    <form [formGroup]="patientSearchForm" autocomplete="off">
+      <button hidden type="submit"></button>
+      <div class="row">
+        <div class="form-field">
+          <label for="nachname">Nachname</label>
+          <div class="input-wrapper">
+            <input class="field" id="nachname" type="text" formControlName="nachname" placeholder="Nachname"
+              #nachnameInput>
+            <button class="clear-field-button" [hidden]="!patientSearchForm.controls.nachname.value"
+              (click)="clearInputAndTriggerNewSearch('nachname')">
+              <app-icon name="close" size="xs"></app-icon>
+            </button>
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="vorname">Vorname</label>
+          <div class="input-wrapper">
+            <input class="field" id="vorname" type="text" formControlName="vorname" placeholder="Vorname">
+            <button class="clear-field-button" [hidden]="!patientSearchForm.controls.vorname.value"
+              (click)="clearInputAndTriggerNewSearch('vorname')">
+              <app-icon name="close" size="xs"></app-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-field">
+          <label for="geburtsdatum">Geburtsdatum</label>
+          <div class="input-wrapper">
+            <input class="field" id="geburtsdatum" type="text" formControlName="geburtsdatum" placeholder="TT.MM.JJJJ"
+              (keydown)="preventNonDigitInputs($event)" (input)="handleDateFieldInput($event)">
+            <button class="clear-field-button" [hidden]="!patientSearchForm.controls.geburtsdatum.value"
+              (click)="clearInputAndTriggerNewSearch('geburtsdatum')">
+              <app-icon name="close" size="xs"></app-icon>
+            </button>
+          </div>
+
+          <ng-container *ngIf="patientSearchForm.controls.geburtsdatum as dateField">
+            <div *ngIf="dateField.touched && dateField.invalid && dateField.errors" class="error-message">
+              <div *ngIf="dateField.errors['invalidFormat']" class="text-small">
+                <app-icon name="warning-triangle" color="red500" size="xs"></app-icon>
+                <div>{{dateField.errors['invalidFormat']}}</div>
+              </div>
+              <div *ngIf="dateField.errors['invalidDate'] && !dateField.errors['invalidFormat']" class="text-small">
+                <app-icon name="warning-triangle" color="red500" size="xs"></app-icon>
+                <div>{{dateField.errors['invalidDate']}}</div>
+              </div>
+              <div
+                *ngIf="dateField.errors['isFutureDate'] && !dateField.errors['invalidDate'] && !dateField.errors['invalidFormat']"
+                class="text-small">
+                <app-icon name="warning-triangle" color="red500" size="xs"></app-icon>
+                <div>{{dateField.errors['isFutureDate']}}</div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+        <app-select formControlName="status" [options]="status" [label]="'Status'"></app-select>
+      </div>
+
+    </form>
+  </div>
+</div>
+<div class="divider" [class.mask]="!userInterfaceService.cIsMobile()"></div>
+<app-patient-search-results></app-patient-search-results>

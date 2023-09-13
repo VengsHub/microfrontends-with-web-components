@@ -1,0 +1,25 @@
+<ng-container *ngIf="patientSearchService.sIsLoading()">
+  <app-spinner></app-spinner>
+</ng-container>
+
+<ng-container *ngIf="!patientSearchService.sIsLoading()">
+  <ng-container *ngIf="patientSearchService.cPatients()?.hits as list">
+    <div *ngIf="!list.length" class="no-results">Es wurden keine Ergebnisse gefunden.</div>
+    <app-search-entry *ngFor="let entry of list" [patient]="entry"></app-search-entry>
+  </ng-container>
+
+  <app-icon *ngIf="!patientSearchService.cPatients()"
+            name="search" color="gray200"
+            height="96px" width="96px"
+            class="search-icon"
+            data-test="empty-result"
+  ></app-icon>
+</ng-container>
+
+<footer>
+  <span>Patientenverzeichnis öffnen</span>
+  <app-icon name="open-in-new-tab" color="blue500"></app-icon>
+  <span class="result-count" *ngIf="patientSearchService.cPatients() && patientSearchService.cPatients()?.totalAmount">
+    {{patientSearchService.cPatients()?.totalAmount}}&nbsp;Ergebnisse
+  </span>
+</footer>

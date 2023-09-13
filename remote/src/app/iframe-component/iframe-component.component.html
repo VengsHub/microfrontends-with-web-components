@@ -1,0 +1,9 @@
+<section *ngIf="iframe">
+  <iframe
+    [src]="iframe.widgetUrl | safeUrl:'resourceUrl'"
+    [name]="iframe.title"
+    width="100%"
+    [height]="cIFrameHeight()"
+    sandbox="allow-forms allow-scripts allow-popups allow-same-origin">
+  </iframe>
+</section>

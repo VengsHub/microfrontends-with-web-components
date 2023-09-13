@@ -1,0 +1,28 @@
+<ng-container *ngIf="patient">
+  <div class="person">
+    <div>
+      <span>{{patient.nachname + ', ' + patient.vorname}}</span>
+      <span>&nbsp;({{patient.geschlecht | lowercase}})</span>
+    </div>
+    <div class="context-wrapper">
+      <button (click)="toggleMenu()" #contextButtonRef>
+        <app-icon name="ellipsis" color="blue500"></app-icon>
+      </button>
+      <app-search-entry-context-menu
+        *ngIf="!userInterfaceService.cIsMobile() && isMenuOpen"
+        (appClickOutside)="isMenuOpen = false"></app-search-entry-context-menu>
+    </div>
+
+  </div>
+  <div class="person-information">
+    <div class="person-information__address">
+      <div>{{(patient.adresse?.strasse ?? '') +' '+ (patient.adresse?.hausnummer ?? '') }}</div>
+      <div>{{(patient.adresse?.plz ?? '') +' '+ (patient.adresse?.ort ?? '')}}</div>
+    </div>
+
+    <div class="person-information__metadata">
+      <div>Geb:&nbsp;{{patient.geburtsdatum | date:'dd.MM.yyyy'}}</div>
+      <div>BSNR:&nbsp;123456789</div>
+    </div>
+  </div>
+</ng-container>

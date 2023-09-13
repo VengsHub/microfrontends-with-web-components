@@ -1,0 +1,43 @@
+<section [class.open-upwards]="cShouldOpenUpwards()" [class.fixed-menu]="cShouldPositionFixed()">
+  <ng-container *ngIf="userInterfaceService.cIsMobile()">
+    <div *ngIf="userInterfaceService.sPatientSearchContextMenuData() as patient" class="patient">
+      <div>
+        <h5>Aktion wählen</h5>
+        <div class="text-small">{{patient.nachname}}, {{patient.vorname}},  {{patient.geburtsdatum | date: 'dd.MM.yyyy'}}</div>
+      </div>
+      <button (click)="userInterfaceService.sPatientSearchContextMenuData.set(undefined)">
+        <app-icon name="close" size="xs"></app-icon>
+      </button>
+    </div>
+  </ng-container>
+
+  <div class="action">
+    <img src="assets/duotone-icons/open-in-new-tab.svg" alt="Open in new tab">
+    <div class="action-name">Patientenakte in Tab öffnen</div>
+  </div>
+
+  <div class="action">
+    <img src="assets/duotone-icons/create-appointment.svg" alt="Create appointment">
+    <div class="action-name">Termin erstellen</div>
+  </div >
+
+  <div class="action">
+    <img src="assets/duotone-icons/prescription.svg" alt="Prescription">
+    <div class="action-name">Rezept erstellen</div>
+  </div>
+
+  <div class="action">
+    <img src="assets/duotone-icons/transfer.svg" alt="Transfer">
+    <div class="action-name">Überweisungsschein erstellen</div>
+  </div>
+
+  <div class="action">
+    <img src="assets/duotone-icons/lab-transfer.svg" alt="Lab transfer">
+    <div class="action-name">L-Überweisungsschein erstellen</div>
+  </div>
+
+  <div class="action">
+    <img src="assets/duotone-icons/certificate-of-incapacity.svg" alt="Certificate of incapacity">
+    <div class="action-name">AU erstellen</div>
+  </div>
+</section>
